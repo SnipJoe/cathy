@@ -54,6 +54,7 @@ jobs:
 
 
       - name: Running Nuclei for vulnerability assessment
+        timeout-minutes: 340
         continue-on-error: true
         run: |
           nuclei -ut
