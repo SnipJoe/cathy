@@ -18,8 +18,10 @@ jobs:
           path: /home/runner/go
           key: ${{ runner.os }}-go
 
-      - name: Setup Dependencies
-        run: sudo apt-get install libpcap-dev  
+      - name: Setup Clearning
+        run: |
+            rm -rf *_*.txt 
+        shell: bash
 
       - name: Setting up ProjectDiscovery tools
         env:
@@ -37,7 +39,6 @@ jobs:
 
       - name: Running SubFinder for passive DNS enumeration
         run: |
-          rm -rf *_*.txt
           subfinder -dL domains.txt -config subfinder-config.yaml -t 1350 -o passive_subdomains.txt
         shell: bash
         
